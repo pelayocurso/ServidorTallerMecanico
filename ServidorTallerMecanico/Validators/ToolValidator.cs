@@ -11,7 +11,15 @@ namespace ServidorTallerMecanico.Validators
     {
         public ToolValidator()
         {
-            //RuleFor()
+            RuleFor(x => x.Type)
+                .NotNull()
+                    .WithMessage("El tipo de herramienta debe tener algun valor.")
+                .NotEmpty()
+                    .WithMessage("El tipo de herramienta no puede estar en blanco.")
+                .Length(0,100)
+                    .WithMessage("El tipo de herramienta no puede ser mayor de 100 caracteres.");
+
+            RuleFor(x => x.)
         }
     }
 }

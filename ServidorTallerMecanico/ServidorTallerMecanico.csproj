@@ -276,6 +276,7 @@
     <Compile Include="Services\VehicleService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Validators\ToolValidator.cs" />
+    <Compile Include="Validators\VehicleValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

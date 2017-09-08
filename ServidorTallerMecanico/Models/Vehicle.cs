@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web;
 
 namespace ServidorTallerMecanico.Models
 {
+    [Validator(typeof(VehicleValidator))]
     public class Vehicle
     {
         [Key]
@@ -13,8 +15,18 @@ namespace ServidorTallerMecanico.Models
         public string Owner { get; set; }
         public string Type { get; set; }
         public string Trouble { get; set; }
-        public string State { get; set; }
+        public State State { get; set; }
         public double Budget { get; set; }
         public DateTime Date { get; set; }
+    }
+
+    public enum State
+    {
+        ENTRADA, REPARACIÓN, SALIDA
+    }
+
+    public enum VehicleType
+    {
+        MOTO, COCHE, CAMION
     }
 }

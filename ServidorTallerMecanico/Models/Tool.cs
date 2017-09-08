@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation.Attributes;
+using ServidorTallerMecanico.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,6 +8,7 @@ using System.Web;
 
 namespace ServidorTallerMecanico.Models
 {
+    [Validator(typeof(ToolValidator))]
     public class Tool
     {
         [Key]
