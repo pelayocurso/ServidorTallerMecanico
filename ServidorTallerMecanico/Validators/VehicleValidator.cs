@@ -32,6 +32,11 @@ namespace ServidorTallerMecanico.Validators
                 .NotEmpty().WithMessage("El campo \"Tipo\" no puede estar vacio.")
                 .IsInEnum().WithMessage("Los valores permitidos para el campo \"Tipo\" son: MOTO, COCHE y CAMION");
 
+            RuleFor(x => x.Registration)
+                .NotNull().WithMessage("El campo \"Matricula\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Matricula\" no puede estar vacio.")
+                .Matches("/^[A-Z \\-0-9]{6,12}$/").WithMessage("El campo \"Matricula\" no es valido.");
+
             RuleFor(x => x.Trouble)
                 .NotNull().WithMessage("El campo \"Averia\" no puede ser nulo.")
                 .NotEmpty().WithMessage("El campo \"Averia\" no puede estar vacio.")

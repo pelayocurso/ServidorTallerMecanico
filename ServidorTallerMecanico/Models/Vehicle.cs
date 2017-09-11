@@ -15,6 +15,7 @@ namespace ServidorTallerMecanico.Models
         public long Id { get; set; }
         public string Owner { get; set; }
         public VehicleType Type { get; set; }
+        public string Registration { get; set; }
         public string Trouble { get; set; }
         public State State { get; set; }
         public double Budget { get; set; }
