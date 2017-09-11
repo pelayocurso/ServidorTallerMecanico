@@ -11,15 +11,30 @@ namespace ServidorTallerMecanico.Validators
     {
         public ToolValidator()
         {
-            RuleFor(x => x.Type)
-                .NotNull()
-                    .WithMessage("El tipo de herramienta debe tener algun valor.")
-                .NotEmpty()
-                    .WithMessage("El tipo de herramienta no puede estar en blanco.")
-                .Length(0,100)
-                    .WithMessage("El tipo de herramienta no puede ser mayor de 100 caracteres.");
+            /*
+            public long Id { get; set; }
+            public string Type { get; set; }
+            public string Name { get; set; }
+            public int Quantity { get; set; }
+            public DateTime Date { get; set; }
+            */
 
-            RuleFor(x => x.)
+            RuleFor(x => x.Type)
+                .NotNull().WithMessage("El campo \"Tipo\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Tipo\" no puede estar vacio.")
+                .Length(0, 100).WithMessage("El campo \"Tipo\" no puede superar los 100 caracteres.")
+                .Matches("/^[a - z,.'-]+$/i").WithMessage("El campo \"Tipo\" no sigue un formato valido.");
+
+            RuleFor(x => x.Name)
+                .NotNull().WithMessage("El campo \"Nombre\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Nombre\" no puede estar vacio.")
+                .Length(0, 100).WithMessage("El campo \"Nombre\" no puede superar los 100 caracteres.");
+
+            RuleFor(x => x.Quantity)
+                .NotNull().WithMessage("El campo \"Cantidad\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Cantidad\" no puede estar vacio.")
+                .GreaterThan(-1).WithMessage("El campo \"Cantidad\" no puede ser negativo.");
+
         }
     }
 }

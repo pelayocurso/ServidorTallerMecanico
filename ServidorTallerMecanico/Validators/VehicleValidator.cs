@@ -11,13 +11,43 @@ namespace ServidorTallerMecanico.Validators
     {
         public VehicleValidator()
         {
-            RuleFor(x => x.Owner)
-                .NotEmpty().WithMessage("El campo x no puede estar vacio.")
-                .Length(0, 100).WithMessage("El campo x no puede superar los 100 caracteres.");
-            RuleFor(x => x.Type)
-                .NotEmpty().WithMessage("El campo x no puede estar vacio.")
-                .IsInEnum();
+            /*
+            public long Id { get; set; }
+            public string Owner { get; set; }
+            public VehicleType Type { get; set; }
+            public string Trouble { get; set; }
+            public State State { get; set; }
+            public double Budget { get; set; }
+            public DateTime Date { get; set; }
+            */
 
+            RuleFor(x => x.Owner)
+                .NotNull().WithMessage("El campo \"Dueño\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Dueño\" no puede estar vacio.")
+                .Length(0, 100).WithMessage("El campo \"Dueño\" no puede superar los 100 caracteres.")
+                .Matches("/^[a - z,.'-]+$/i").WithMessage("El campo \"Dueño\" no sigue un formato valido.");
+
+            RuleFor(x => x.Type)
+                .NotNull().WithMessage("El campo \"Tipo\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Tipo\" no puede estar vacio.")
+                .IsInEnum().WithMessage("Los valores permitidos para el campo \"Tipo\" son: MOTO, COCHE y CAMION");
+
+            RuleFor(x => x.Trouble)
+                .NotNull().WithMessage("El campo \"Averia\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Averia\" no puede estar vacio.")
+                .Length(0, 400).WithMessage("El campo \"Averia\" no puede superar los 400 caracteres.");
+
+            RuleFor(x => x.State)
+                .NotNull().WithMessage("El campo \"Estado\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Estado\" no puede estar vacio.")
+                .IsInEnum().WithMessage("Los valores permitidos para el campo \"Estado\" son: ENTRADA, REPARACION y SALIDA");
+
+            RuleFor(x => x.Budget)
+                .NotNull().WithMessage("El campo \"Dueño\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Dueño\" no puede estar vacio.")
+                .GreaterThan(0).WithMessage("El campo \"Presupuesto\" debe ser mayor que 0.");
+
+            // RuleFor(x => x.Date);
         }
     }
 }

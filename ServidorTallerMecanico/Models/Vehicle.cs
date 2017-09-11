@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Attributes;
+using ServidorTallerMecanico.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +14,7 @@ namespace ServidorTallerMecanico.Models
         [Key]
         public long Id { get; set; }
         public string Owner { get; set; }
-        public string Type { get; set; }
+        public VehicleType Type { get; set; }
         public string Trouble { get; set; }
         public State State { get; set; }
         public double Budget { get; set; }
