@@ -24,7 +24,7 @@ namespace ServidorTallerMecanico.Models
 
     public enum State
     {
-        ENTRADA, REPARACIÓN, SALIDA
+        ESPERA, ENTRADA, REPARACIÓN, SALIDA, HECHO
     }
 
     public enum VehicleType

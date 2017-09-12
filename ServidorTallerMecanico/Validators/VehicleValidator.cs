@@ -25,7 +25,7 @@ namespace ServidorTallerMecanico.Validators
                 .NotNull().WithMessage("El campo \"Dueño\" no puede ser nulo.")
                 .NotEmpty().WithMessage("El campo \"Dueño\" no puede estar vacio.")
                 .Length(0, 100).WithMessage("El campo \"Dueño\" no puede superar los 100 caracteres.")
-                .Matches("/^[a - z,.'-]+$/i").WithMessage("El campo \"Dueño\" no sigue un formato valido.");
+                .Matches(@"^[a-zA-Z áéíóúÁÉÍÓÚñÑçÇ,.'-]+$").WithMessage("El campo \"Dueño\" no sigue un formato valido.");
 
             RuleFor(x => x.Type)
                 .NotNull().WithMessage("El campo \"Tipo\" no puede ser nulo.")
@@ -35,7 +35,7 @@ namespace ServidorTallerMecanico.Validators
             RuleFor(x => x.Registration)
                 .NotNull().WithMessage("El campo \"Matricula\" no puede ser nulo.")
                 .NotEmpty().WithMessage("El campo \"Matricula\" no puede estar vacio.")
-                .Matches("/^[A-Z \\-0-9]{6,12}$/").WithMessage("El campo \"Matricula\" no es valido.");
+                .Matches(@"^[A-Z- 0-9]{6,12}$").WithMessage("El campo \"Matricula\" no es valido.");
 
             RuleFor(x => x.Trouble)
                 .NotNull().WithMessage("El campo \"Averia\" no puede ser nulo.")
@@ -44,12 +44,12 @@ namespace ServidorTallerMecanico.Validators
 
             RuleFor(x => x.State)
                 .NotNull().WithMessage("El campo \"Estado\" no puede ser nulo.")
-                .NotEmpty().WithMessage("El campo \"Estado\" no puede estar vacio.")
-                .IsInEnum().WithMessage("Los valores permitidos para el campo \"Estado\" son: ENTRADA, REPARACION y SALIDA");
+                //.NotEmpty().WithMessage("El campo \"Estado\" no puede estar vacio.")
+                .IsInEnum().WithMessage("Los valores permitidos para el campo \"Estado\" son: ESPERA, ENTRADA, REPARACIÓN, SALIDA y HECHO");
 
             RuleFor(x => x.Budget)
-                .NotNull().WithMessage("El campo \"Dueño\" no puede ser nulo.")
-                .NotEmpty().WithMessage("El campo \"Dueño\" no puede estar vacio.")
+                .NotNull().WithMessage("El campo \"Presupuesto\" no puede ser nulo.")
+                .NotEmpty().WithMessage("El campo \"Presupuesto\" no puede estar vacio.")
                 .GreaterThan(0).WithMessage("El campo \"Presupuesto\" debe ser mayor que 0.");
 
             // RuleFor(x => x.Date);
