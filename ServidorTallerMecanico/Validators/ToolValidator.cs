@@ -23,7 +23,7 @@ namespace ServidorTallerMecanico.Validators
                 .NotNull().WithMessage("El campo \"Tipo\" no puede ser nulo.")
                 .NotEmpty().WithMessage("El campo \"Tipo\" no puede estar vacio.")
                 .Length(0, 100).WithMessage("El campo \"Tipo\" no puede superar los 100 caracteres.")
-                .Matches("/^[a - z,.'-]+$/i").WithMessage("El campo \"Tipo\" no sigue un formato valido.");
+                .Matches(@"^[a-zA-Z áéíóúÁÉÍÓÚñÑçÇ,.'-]+$").WithMessage("El campo \"Dueño\" no sigue un formato valido.");
 
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("El campo \"Nombre\" no puede ser nulo.")
